@@ -1,17 +1,18 @@
 package com.parking;
 
 public class ParkingProcessor {
-
-	public void textInputProcessor(String input) {
-		
+	ParkingService service = new ParkingSeviceImpl();
+	public void textInputProcessor(String input) {		
 		String[] inputArr = input.split(" ");
 		switch (Commands.getEnum(inputArr[0])) {
 		case CREATE:
-			System.out.println("Create");
+			int capacity=Integer.parseInt(inputArr[1]);
+			service.createParkingLot(capacity);
 			break;
 		
 		case PARK:
-			System.out.println("park");
+			Vehicle vehicle=new Vehicle(inputArr[1]);
+			service.park(vehicle);
 			break;
 
 		case LEAVE:
