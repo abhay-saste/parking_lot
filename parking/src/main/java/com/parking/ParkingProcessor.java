@@ -16,11 +16,13 @@ public class ParkingProcessor {
 			break;
 
 		case LEAVE:
-			System.out.println("leave");
+			int slot=Integer.parseInt(inputArr[1]);
+			int time=Integer.parseInt(inputArr[2]);
+			service.leave(slot, time);
 			break;
 
 		case STATUS:
-			System.out.println("sttus");	
+			service.status();
 			break;
 
 		default:

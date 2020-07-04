@@ -2,6 +2,7 @@ package com.parking;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.TreeSet;
 
 public class ParkingSeviceImpl implements ParkingService{
@@ -19,7 +20,6 @@ public class ParkingSeviceImpl implements ParkingService{
 	}
 
 	public void park(Vehicle vehicle) {
-		System.out.println(availability);
 		if(availability==0) {
 			System.out.println("Sorry, parking lot is full");
 		}else if(parkingLayout.containsValue(vehicle)){
@@ -29,16 +29,32 @@ public class ParkingSeviceImpl implements ParkingService{
 			parkingLayout.put(slot, vehicle);
 			availability--;
 			freeSlot.remove(slot);
+			System.out.println("Allocated slot number: "+slot);
 		}
 		
 	}
 
-	public void leave(int lot, int time) {
+	public void leave(int slot, int time) {
 		
+		if(freeSlot.contains(slot)) {
+			//TODO vehicle number
+			System.out.println("Not found");
+		}else {
+			parkingLayout.put(slot, null);
+			availability++;
+			freeSlot.add(slot);
+			//TODO charge
+		}
 	}
 
 	public void status() {
-		
+		System.out.println("Slot No.   Registration No.");
+		for ( Entry<Integer, Vehicle> map : parkingLayout.entrySet()) {
+			if(map.getValue()!=null) {
+				System.out.println(map.getKey()+"   "+map.getValue().getRegNum());
+			}
+			
+		}
 	}
 
 }
