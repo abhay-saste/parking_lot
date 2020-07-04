@@ -34,19 +34,26 @@ public class ParkingSeviceImpl implements ParkingService{
 		
 	}
 
-	public void leave(int slot, int time) {
-		
-		if(freeSlot.contains(slot)) {
-			//TODO vehicle number
-			System.out.println("Not found");
+	public void leave(Vehicle vehicle, int time) {
+		int slot = 0;
+		for ( Entry<Integer, Vehicle> entry : parkingLayout.entrySet()) {
+			if(vehicle.equals(entry.getValue())) {
+				slot=entry.getKey();
+			}
+		}
+		if(freeSlot.contains(slot) ){
+			System.out.println("Registration number "+vehicle.getRegNum()+" not found");
 		}else {
-			parkingLayout.put(slot, null);
+			int charges=calculateCharges(time);
+			
+			parkingLayout.put(slot,null);
 			availability++;
-			freeSlot.add(slot);
-			//TODO charge
+			freeSlot.add(slot);		
+			System.out.println("Registration number "+vehicle.getRegNum()+" with Slot Number "+slot+" is free with Charge "+charges);
 		}
 	}
 
+	
 	public void status() {
 		System.out.println("Slot No.   Registration No.");
 		for ( Entry<Integer, Vehicle> map : parkingLayout.entrySet()) {
@@ -56,5 +63,8 @@ public class ParkingSeviceImpl implements ParkingService{
 			
 		}
 	}
-
+	private int calculateCharges(int time) {
+		return (time<=2)?10:10+(time-2)*10;
+		
+	}
 }

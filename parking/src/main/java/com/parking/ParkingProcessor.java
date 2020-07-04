@@ -16,9 +16,9 @@ public class ParkingProcessor {
 			break;
 
 		case LEAVE:
-			int slot=Integer.parseInt(inputArr[1]);
+			Vehicle v=new Vehicle(inputArr[1]);
 			int time=Integer.parseInt(inputArr[2]);
-			service.leave(slot, time);
+			service.leave(v, time);
 			break;
 
 		case STATUS:
