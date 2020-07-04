@@ -1,5 +1,11 @@
 package com.parking;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
 public class ParkingProcessor {
 	ParkingService service = new ParkingSeviceImpl();
 	public void textInputProcessor(String input) {		
@@ -27,6 +33,22 @@ public class ParkingProcessor {
 
 		default:
 			break;
+		}
+		
+	}
+	public void fileInputProcessor(String path) {
+		try {
+			BufferedReader reader = new BufferedReader(new FileReader(new File(path)));
+		String line=null;
+			try {
+				while((line=reader.readLine())!=null) {
+					textInputProcessor(line.trim());
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
 		}
 		
 	}

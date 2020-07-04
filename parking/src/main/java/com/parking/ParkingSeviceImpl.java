@@ -41,7 +41,7 @@ public class ParkingSeviceImpl implements ParkingService{
 				slot=entry.getKey();
 			}
 		}
-		if(freeSlot.contains(slot) ){
+		if(parkingLayout.get(slot)==null){
 			System.out.println("Registration number "+vehicle.getRegNum()+" not found");
 		}else {
 			int charges=calculateCharges(time);

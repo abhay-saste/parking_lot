@@ -29,7 +29,7 @@ public class App
 			}
 			break;
 		case 1:
-			
+			processor.fileInputProcessor(args[0]);
 			break;
 
 		default:
