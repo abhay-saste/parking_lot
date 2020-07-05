@@ -19,7 +19,8 @@ public enum Commands {
 			}
 			
 		}
-		throw new IllegalArgumentException();
+		System.out.println("Command not identified.");
+		return null;
 	}
 	String value;
 }

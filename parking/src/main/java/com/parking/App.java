@@ -23,9 +23,11 @@ public class App
 			if(input.equalsIgnoreCase("exit")) {
 				System.out.println("Thank you. Bye.");
 				break;
-			}
-			 processor.textInputProcessor(input);
-		        
+			}else if(Validations.validate(input)) {
+				processor.textInputProcessor(input);		        
+				}else {
+					System.out.println("Check Input command format and try again.");
+				}
 			}
 			break;
 		case 1:

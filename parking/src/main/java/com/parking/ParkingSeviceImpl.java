@@ -20,7 +20,10 @@ public class ParkingSeviceImpl implements ParkingService{
 	}
 
 	public void park(Vehicle vehicle) {
-		if(availability==0) {
+		
+		if(freeSlot.size()==0 && availability==0) {
+			System.out.println("Parking lot is not created.");
+		}else if(availability==0) {
 			System.out.println("Sorry, parking lot is full");
 		}else if(parkingLayout.containsValue(vehicle)){
 			System.out.println("Already parked");

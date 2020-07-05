@@ -1,4 +1,4 @@
-package parking.parking;
+package test.parking;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
