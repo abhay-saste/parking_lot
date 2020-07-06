@@ -8,10 +8,12 @@ import java.util.TreeSet;
 public class ParkingSeviceImpl implements ParkingService{
 
 	int availability=0;
+	int capacity=0;
 	Map<Integer, Vehicle>parkingLayout=new HashMap<Integer, Vehicle>();
 	TreeSet<Integer> freeSlot=new TreeSet<Integer>();
 	public void createParkingLot(int capacity) {
 		this.availability=capacity;
+		this.capacity=capacity;
 		for (int i = 1; i <=capacity ; i++) {
 			parkingLayout.put(i, null);
 			freeSlot.add(i);
@@ -21,7 +23,7 @@ public class ParkingSeviceImpl implements ParkingService{
 
 	public void park(Vehicle vehicle) {
 		
-		if(freeSlot.size()==0 && availability==0) {
+		if(capacity==0) {
 			System.out.println("Parking lot is not created.");
 		}else if(availability==0) {
 			System.out.println("Sorry, parking lot is full");
@@ -66,8 +68,19 @@ public class ParkingSeviceImpl implements ParkingService{
 			
 		}
 	}
+	
+	public int getCurrentParkingCount() {
+		return capacity-availability;
+	}
 	private int calculateCharges(int time) {
 		return (time<=2)?10:10+(time-2)*10;
+		
+	}
+
+	public void cleanUp() {
+		this.parkingLayout=null;
+		this.availability=0;
+		this.capacity=0;
 		
 	}
 }

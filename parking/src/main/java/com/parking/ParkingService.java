@@ -5,5 +5,7 @@ public interface ParkingService {
 	public void park(Vehicle vehicle);
 	public void leave(Vehicle vehicle, int time);
 	public void status();
+	public int getCurrentParkingCount() ;
+	public void cleanUp();
 
 }
