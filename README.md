@@ -13,21 +13,25 @@ the ticket with the time the car was parked in the lot, which then marks the slo
 were using as being available. Total parking charge should be calculated as per the
 parking time. Charge applicable is $10 for first 2 hours and $10 for every additional
 hour.
+
 We interact with the system via a simple set of commands which produce a specific
 output. Please take a look at the example below, which includes all the commands
 you need to support - they're self explanatory. The system should accept a filename
 as a parameter at the command prompt and read the commands from that file.
+
 Example: File
 To install all dependencies, compile and run tests:
 $ bin/setup
 To run the code so it accepts input from a file:
 $ bin/parking_lot file_inputs.txt
+
 Commands
 • Create parking lot of size n : create_parking_lot
 {capacity}
 • Park a car : park {car_number}
 • Remove(Unpark) car from : leave {car_number} {hours}
 • Print status of parking slot : status
+
 Input (contents of file):
 create_parking_lot 6
 park KA-01-HH-1234
